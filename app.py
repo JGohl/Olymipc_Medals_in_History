@@ -45,10 +45,10 @@ winter_and_summer_df = pd.concat([df_summer, df_winter])
 df_dictionary=df_dictionary.rename(columns = {'Country':'Country_full_name', 'Code':'Country'})
 
 #merge dictionary into combined summer and winter data frame
-master_data = pd.merge(winter_and_summer_df, df_dictionary, on='Country')
+master_data = pd.merge(winter_and_summer_df, df_dictionary, how='outer', on='Country')
 
 # convert master_data to SQL table, and then upload table to database using SQL connection, non-indexed
-master_data.to_sql(name = 'master_data', con = database_connection, index=False, if_exists='append')
+master_data.to_sql(name = 'master_data', con = database_connection, index=False, if_exists='replace', chunksize=1000)
 
 
 from flask import Flask, jsonify, render_template
