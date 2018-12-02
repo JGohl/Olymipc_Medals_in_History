@@ -28,9 +28,16 @@ database_connection = sqlalchemy.create_engine('mysql+mysqlconnector://{0}:{1}@{
 f_winter = "data/winter.csv"
 f_summer = "data/summer.csv"
 f_dictionary = "data/dictionary.csv"
+f_coord = "data/country-capitals.csv"
+f_maps = "data/country_flags.csv"
 df_winter = pd.read_csv(f_winter, encoding = 'utf-8')
 df_summer = pd.read_csv(f_summer, encoding = 'utf-8')                                                     
 df_dictionary = pd.read_csv(f_dictionary, encoding = 'utf-8')
+df_coord = pd.read_csv(f_coord, encoding = 'utf-8')
+df_maps = pd.read_csv(f_maps, encoding = 'utf-8')
+
+#ensure entire link is displayed in dataframes
+pd.set_option('display.max_colwidth', -1)
 
 #add "season" column to df_winter for winter season
 df_winter['season'] = "winter"
@@ -41,11 +48,21 @@ df_summer['season'] = "summer"
 #merge all winter and summer data frames into one data frame
 winter_and_summer_df = pd.concat([df_summer, df_winter])
 
-#change dictionary_df column name of 'Country' to 'Country_full_name', and rename 'Code' to 'Country'
+#change df_dictionary, df_coord, and df_maps Country column names to 'Country_full_name', and rename 'Code' to 'Country' for merging
 df_dictionary=df_dictionary.rename(columns = {'Country':'Country_full_name', 'Code':'Country'})
+df_coord=df_coord.rename(columns = {'CountryName':'Country_full_name'})
+df_coord=df_coord.drop(columns=["CountryCode"])
+df_maps=df_maps.rename(columns = {'Country':'Country_full_name'})
 
-#merge dictionary into combined summer and winter data frame
-master_data = pd.merge(winter_and_summer_df, df_dictionary, how='outer', on='Country')
+#strip '*' from df_dictionary
+df_dictionary.Country_full_name = [x.strip('*') for x in df_dictionary.Country_full_name]
+
+#merge df_dictionary, df_coord, and df_maps
+df_dict_coord = pd.merge(df_dictionary, df_coord, how="left", on="Country_full_name" )
+df_dict_coord_maps = pd.merge(df_dict_coord, df_maps, how="left", on="Country_full_name")
+
+#merge combined dictionary into combined summer and winter data frame
+master_data = pd.merge(winter_and_summer_df, df_dict_coord_maps, how="outer", on='Country')
 
 # convert master_data to SQL table, and then upload table to database using SQL connection, non-indexed
 master_data.to_sql(name = 'master_data', con = database_connection, index=False, if_exists='replace', chunksize=1000)
