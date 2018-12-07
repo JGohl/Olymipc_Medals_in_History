@@ -117,8 +117,8 @@ Jordan,Amman,31.95,35.933333,JO,Asia
 Kazakhstan,Astana,51.16666667,71.416667,KZ,Asia
 Kenya,Nairobi,-1.283333333,36.816667,KE,Africa
 Kiribati,Tarawa,-0.883333333,169.533333,KI,Australia
-North Korea,Pyongyang,39.01666667,125.75,KP,Asia
-South Korea,Seoul,37.55,126.983333,KR,Asia
+"Korea, North",Pyongyang,39.01666667,125.75,KP,Asia
+"Korea, South",Seoul,37.55,126.983333,KR,Asia
 Kosovo,Pristina,42.66666667,21.166667,KO,Europe
 Kuwait,Kuwait City,29.36666667,47.966667,KW,Asia
 Kyrgyzstan,Bishkek,42.86666667,74.6,KG,Asia
