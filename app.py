@@ -288,7 +288,7 @@ pymysql.install_as_MySQLdb()
 
 #change values to new credentials
 database_username = 'root'
-database_password = 'bRainwAve13'
+database_password = ''
 database_ip       = '127.0.0.1:3306'
 database_name     = 'olympics'
 database_connection = sqlalchemy.create_engine('mysql+mysqlconnector://{0}:{1}@{2}/{3}'.
