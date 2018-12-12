@@ -241,41 +241,41 @@ master_data.drop(master_data.loc[master_data['Country_code']=='VARIOUS'].index, 
 # add an id index to master dataframe
 master_data['id'] = range(1, len(master_data) + 1)
 
-# search for any nan GDP values in master data
-nan_master_data = master_data[master_data['GDP per Capita'].isnull()]
+# # search for any nan GDP values in master data
+# nan_master_data = master_data[master_data['GDP per Capita'].isnull()]
 
-print("Any nan values in master_data, to be fixed downstream:")
-print(nan_master_data)
-print('----------------------------------')
-print(len(nan_master_data))
+# print("Any nan values in master_data, to be fixed downstream:")
+# print(nan_master_data)
+# print('----------------------------------')
+# print(len(nan_master_data))
 
-# fill NaN GDP per Capita values with 0
-master_data['GDP per Capita'] = master_data.fillna(0)
+# # fill NaN GDP per Capita values with 0
+# master_data['GDP per Capita'] = master_data.fillna(0)
 
-print('Creation of single master dataframe complete.')
-print('----------------------------------')
-print('Now previewing and getting shape of master_data...')
-print(master_data.shape)
-print(master_data.head(3))
-print('----------------------------------')
+# print('Creation of single master dataframe complete.')
+# print('----------------------------------')
+# print('Now previewing and getting shape of master_data...')
+# print(master_data.shape)
+# print(master_data.head(3))
+# print('----------------------------------')
 
-# search for any nan Population values in master data
-nan_master_data = master_data[master_data['Population'].isnull()]
+# # search for any nan Population values in master data
+# nan_master_data = master_data[master_data['Population'].isnull()]
 
-print("Any nan values in master_data, to be fixed downstream:")
-print(nan_master_data)
-print('----------------------------------')
-print(len(nan_master_data))
+# print("Any nan values in master_data, to be fixed downstream:")
+# print(nan_master_data)
+# print('----------------------------------')
+# print(len(nan_master_data))
 
-# fill NaN GDP per Capita values with 0
-master_data['Population'] = master_data.fillna(0)
+# # fill NaN Population values with 0
+# master_data['Population'] = master_data.fillna(0)
 
-print('Creation of single master dataframe complete.')
-print('----------------------------------')
-print('Now previewing and getting shape of master_data...')
-print(master_data.shape)
-print(master_data.head(3))
-print('----------------------------------')
+# print('Creation of single master dataframe complete.')
+# print('----------------------------------')
+# print('Now previewing and getting shape of master_data...')
+# print(master_data.shape)
+# print(master_data.head(3))
+# print('----------------------------------')
 
 # 4 
 # upload master DataFrame to MySQL DB running on AWS cloud server
@@ -288,7 +288,7 @@ pymysql.install_as_MySQLdb()
 
 #change values to new credentials
 database_username = 'root'
-database_password = ''
+database_password = 'bRainwAve13'
 database_ip       = '127.0.0.1:3306'
 database_name     = 'olympics'
 database_connection = sqlalchemy.create_engine('mysql+mysqlconnector://{0}:{1}@{2}/{3}'.
@@ -319,6 +319,11 @@ def index():
     '''Return to the homepage.'''
     return render_template('index.html')
     
+@app.route("/map")
+def map():
+    '''Return to the map visual.'''
+    return render_template('map.html')
+
 @app.route("/data")
 def data():
     """Return the json data"""
