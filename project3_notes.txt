@@ -1,0 +1,62 @@
+group project idea
+data set = olympic data
+url: https://www.kaggle.com/the-guardian/olympic-games
+maps = location of winner, location of olympics, winter (dark), summer (light)
+
+amazon web server:
+sql server, code already done in previous group project
+flask server code, already done in previous group project
+
+our amazon cloud server will host the following:
+our database
+our http server
+our libraries/dependencies
+
+we will obtain the 2 csv files (dataset) from kaggle
+we will then upload the dataset to our amazon web server
+we will then do everything in python (queries, joins, exports)
+we will use flask (app.py) to show web pages
+allow user to manipulate data,
+using event listeners, or based on user input
+
+pages: with navbar 
+1 index.html = main navigation page (piechart, bar chart, scatter, bubble, actual maps) using D3 and javascript
+2 summer.html = summer data (static image)
+3 winter.html = winter data (static image)
+4 other visuals based on queries (static images)
+on homepage, US Based,
+
+queries; 
+overall medals per country
+gender breakdown 
+breakdown of events, sport, and discipline
+medal breakdowns
+
+at least one JS library that we did not cover.
+-jquery (to change the html page)  https://jquery.com/
+
+
+// meet 2
+layout = general navbar at top, with buttons
+main landing page = sample images of other visuals from other pages
+page 1 = scatter plot with map: medals won on 1 axis, and gdp on the other axis
+pae 2 = 2 diff types of layers on 1 map, dark and light = summer and winter, with tooltip, and filters
+for tooltips: medal type and count (gold, silver, bronze), and show GDP in country, and country population.
+put a note that GDP is based on 2014 data, not cumulative over all the years of the olympics.
+in tooltip also: highest achieving athelete per country.
+page 3 = other graphs and visualizations
+scatter
+pie - think about pie data
+
+
+other javascript library to learn/use: Node.js
+https://nodejs.org/en/
+https://www.tutorialspoint.com/nodejs/nodejs_introduction.htm
+
+
+
+
+
+
+
+
