@@ -1,0 +1,25 @@
+
+
+1. on folder containing the folder git bash
+2. then enter "python -m http.server"
+3. Click on Load button, may become unresponsive, click to wait(large data set).
+4. Table should populate.
+5. Table has horizontal and vertical sliders
+
+
+Whats goin on in the code
+1. We chose toload data from csv to HTML table by using AJAX jQuery methon
+2. File Stored in the working folder
+3. Scripts in the Head, jQuery javascript link and bootstraps.
+4. Button tag with an attribute type, when the button is clicked ajax for request data to display data on the table.
+5. Div Id tag where we will display the table that is received from the data.
+6. Now in the script we will have button click function 
+7. Next define Ajax and Request file name in working folder, with text format, and success callback function.
+8. Now we have received data now convert data into table with now define master_data and split csv rows  
+9. Now define another table_data variable with is a bootstrap class.
+10. Now write a Loop to append data to table.
+11. Next the cell_data variable, which gets the single cell using a split method to separate at columns to print a row.
+12. Next another Loop will get value from single row data and store in cell
+13. Next a condition that will get the table heading and append in relation to the column given its cell and row. 
+14. Finally Append the table to the div tag #master_datatable with html format.
+
